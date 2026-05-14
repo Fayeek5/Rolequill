@@ -1,9 +1,10 @@
 import { sampleJobs } from "../data/sampleJobs";
 import type { Job } from "../types";
+import { apiBaseUrl } from "../config/api";
 
 export async function fetchJobs() {
   try {
-    const response = await fetch("http://localhost:5000/api/jobs/fetch");
+    const response = await fetch(`${apiBaseUrl}/api/jobs/fetch`);
     if (!response.ok) {
       throw new Error(`Job API returned ${response.status}`);
     }

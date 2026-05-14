@@ -84,6 +84,11 @@ cp frontend/.env.example frontend/.env
 
 Current demo mode does not require secrets.
 
+For deployment:
+
+- `VITE_API_BASE_URL` should be the deployed backend URL.
+- `CORS_ORIGIN` should be the deployed frontend URL.
+
 ## Validation
 
 Frontend:
@@ -140,6 +145,16 @@ Content-Type: application/json
 - Upwork/Guru/Toptal integrations
 - Email notifications and scheduled job ingestion
 - Deployment to Vercel plus Render/Railway
+
+## Deployment
+
+Recommended portfolio deployment:
+
+1. Import the GitHub repository into Render and deploy `rolequill-backend` from `render.yaml`.
+2. Copy the backend public URL.
+3. Import the GitHub repository into Vercel with root directory `frontend`.
+4. Set `VITE_API_BASE_URL` in Vercel to the backend URL.
+5. Set `CORS_ORIGIN` in Render to the Vercel frontend URL.
 
 ## License
 

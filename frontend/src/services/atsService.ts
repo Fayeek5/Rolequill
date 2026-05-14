@@ -1,4 +1,5 @@
 import type { AppSettings, AtsAnalysis } from "../types";
+import { apiBaseUrl } from "../config/api";
 import { analyzeAts } from "../utils/textAnalysis";
 
 type AtsRequest = {
@@ -15,7 +16,7 @@ export async function analyzeResumeForJob({
   bypassCache = false,
 }: AtsRequest): Promise<AtsAnalysis> {
   try {
-    const response = await fetch("http://localhost:5000/api/ats/analyze", {
+    const response = await fetch(`${apiBaseUrl}/api/ats/analyze`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +52,7 @@ export async function analyzeResumeForJob({
 
 export async function fetchBackendHealth() {
   try {
-    const response = await fetch("http://localhost:5000/api/health");
+    const response = await fetch(`${apiBaseUrl}/api/health`);
     if (!response.ok) throw new Error(`Health returned ${response.status}`);
     return response.json() as Promise<{
       status: string;
